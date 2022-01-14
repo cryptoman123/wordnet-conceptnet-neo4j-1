@@ -8,11 +8,12 @@ COPY download_conceptnet.sh .
 RUN sh download_conceptnet.sh
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN python3.7 -m pip install nltk
+RUN python3.7 -m nltk.downloader all
 
 COPY wordnet_conceptnet_to_neo4j.py .
 
-RUN python wordnet_conceptnet_to_neo4j.py
+RUN python3.7 wordnet_conceptnet_to_neo4j.py
 
 
 # Neo4J instance build
